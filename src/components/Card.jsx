@@ -1,6 +1,6 @@
-function Card({ poke }) {
+function Card({ poke, onPickCard }) {
   return (
-    <li className='cursor-pointer'>
+    <li onClick={() => onPickCard(poke)} className='cursor-pointer'>
       <img
         src={poke.imgUrl}
         alt={poke.name}

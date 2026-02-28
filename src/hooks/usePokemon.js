@@ -3,7 +3,7 @@ import { API_URL } from '../configs';
 import { transformData } from '../helpers';
 
 function usePokemon(callback) {
-  const [pokes, setPokes] = useState(null);
+  const [pokes, setPokes] = useState([]);
 
   useEffect(
     function () {
