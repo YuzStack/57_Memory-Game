@@ -1,6 +1,6 @@
 function Card({ poke }) {
   return (
-    <li className=''>
+    <li className='cursor-pointer'>
       <img
         src={poke.imgUrl}
         alt={poke.name}
