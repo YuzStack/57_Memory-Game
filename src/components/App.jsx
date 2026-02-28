@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../configs';
 import { transformData } from '../helpers';
+import Cards from './Cards';
+// import initialPokes from '../mock-data';
 
 function App() {
-  const [pokes, setPokes] = useState([]);
+  const [pokes, setPokes] = useState(null);
 
   useEffect(function () {
     async function getData() {
@@ -24,12 +26,12 @@ function App() {
 
   return (
     <div className='min-h-screen bg-gray-900 px-4 py-3 text-white'>
-      <div className='mx-auto w-fit space-y-6'>
+      <div className='space-y-6'>
         <div className='space-y-2'>
           <h1 className='text-center text-4xl font-bold tracking-wider'>
             Pokémon Memory Game
           </h1>
-          <p className='italic'>
+          <p className='text-center italic'>
             Get points by clicking on an image, but don't click on any image
             more than once!
           </p>
@@ -45,6 +47,8 @@ function App() {
           <p className='text-lg font-semibold'>Score: 0</p>
           <p className='text-lg font-semibold'>Best Score: 0</p>
         </div>
+
+        {pokes && <Cards pokes={pokes} />}
       </div>
     </div>
   );
