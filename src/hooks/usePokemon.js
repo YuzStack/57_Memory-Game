@@ -2,21 +2,25 @@ import { useEffect, useState } from 'react';
 import { API_URL } from '../configs';
 import { transformData } from '../helpers';
 
-function usePokemon() {
+function usePokemon(callback) {
   const [pokes, setPokes] = useState(null);
 
-  useEffect(function () {
-    async function getData() {
-      const response = await fetch(API_URL);
-      const data = await response.json();
+  useEffect(
+    function () {
+      async function getData() {
+        const response = await fetch(API_URL);
+        const data = await response.json();
 
-      setPokes(transformData(data.results));
-    }
+        setPokes(transformData(data.results));
+        callback && setPokes(curPokes => callback(curPokes));
+      }
 
-    getData();
-  }, []);
+      getData();
+    },
+    [callback],
+  );
 
-  return { pokes };
+  return { pokes, setPokes };
 }
 
 export default usePokemon;

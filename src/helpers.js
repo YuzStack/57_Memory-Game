@@ -19,3 +19,25 @@ export const transformData = function (data) {
     };
   });
 };
+
+// The Fisher-Yates Shuffle
+export const shuffleArray = function (array) {
+  // Copy the passed in array to avoid mutations (keeping the function pure)
+  const newArry = array.slice(0);
+
+  let currentIndex = newArry.length,
+    randomIndex;
+
+  // While there remain items to shuffle.
+  while (currentIndex > 0) {
+    // Pick a random item (index) from the remaining items
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current item using array destructuring.
+    // prettier-ignore
+    [newArry[currentIndex], newArry[randomIndex]] = [newArry[randomIndex], newArry[currentIndex]];
+  }
+
+  return newArry;
+};

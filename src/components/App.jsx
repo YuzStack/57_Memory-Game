@@ -1,8 +1,9 @@
 import Cards from './Cards';
 import usePokemon from '../hooks/usePokemon';
+import { shuffleArray } from '../helpers';
 
 function App() {
-  const { pokes } = usePokemon();
+  const { pokes } = usePokemon(shuffleArray);
 
   const handleLearnMore = function () {
     alert(
